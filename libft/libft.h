@@ -6,7 +6,7 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:15:46 by sungohki          #+#    #+#             */
-/*   Updated: 2022/12/09 23:41:15 by sungohki         ###   ########.fr       */
+/*   Updated: 2022/12/19 18:11:07 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ void	*ft_memset(void *b, int c, size_t len);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+void	ft_putnbr_hex_fd(unsigned int n, int fd);
 void	ft_putstr_fd(char *s, int fd);
+void	ft_putaddr_fd(void *ch, int fd);
 
 char	**ft_split(char const *s, char c);
 char	*ft_strchr(const char *s, int c);
