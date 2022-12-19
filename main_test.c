@@ -6,7 +6,7 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 11:47:12 by sungohki          #+#    #+#             */
-/*   Updated: 2022/12/19 18:09:33 by sungohki         ###   ########.fr       */
+/*   Updated: 2022/12/19 19:04:16 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,12 @@ int	main(void)
 			write(1, &"0123456789abcdef"[temp % 16], 1);
 			temp = temp / 16;
 		}
+	}
+	// strlen 테스트
+	if (1){
+		char	*test10 = "%s%d\n\t";
+		printf("\nstrlen : [%lu, %lu]\n", strlen(test10), ft_strlen(test10));
+		printf("%s\n", test10);
 	}
 	return (0);
 }
