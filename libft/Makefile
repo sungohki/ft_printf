@@ -6,7 +6,7 @@
 #    By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 15:51:25 by sungohki          #+#    #+#              #
-#    Updated: 2022/12/19 18:11:27 by sungohki         ###   ########.fr        #
+#    Updated: 2022/12/21 20:25:09 by sungohki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SOURCES = ./ft_isalpha.c ./ft_isdigit.c ./ft_isalnum.c ./ft_isascii.c\
 	./ft_strnstr.c ./ft_atoi.c ./ft_calloc.c ./ft_strdup.c\
 	./ft_substr.c ./ft_strjoin.c ./ft_strtrim.c ./ft_split.c ./ft_itoa.c\
 	./ft_strmapi.c ./ft_striteri.c ./ft_putchar_fd.c ./ft_putstr_fd.c\
-	./ft_putendl_fd.c ./ft_putnbr_fd.c ./ft_putnbr_hex_fd.c ./ft_putaddr_fd.c
+	./ft_putendl_fd.c ./ft_putnbr_fd.c ./ft_putnbr_hex_fd.c ./ft_putnbr_us_fd.c\
+	./ft_putaddr_fd.c
 SOURCES_BONUS = ./ft_lstnew.c ./ft_lstadd_front.c ./ft_lstsize.c ./ft_lstlast.c\
 	./ft_lstadd_back.c ./ft_lstdelone.c ./ft_lstclear.c ./ft_lstiter.c\
 	./ft_lstmap.c

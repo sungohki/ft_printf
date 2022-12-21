@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_putnbr_us_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 11:26:11 by sungohki          #+#    #+#             */
-/*   Updated: 2022/12/21 17:19:10 by sungohki         ###   ########.fr       */
+/*   Created: 2022/12/21 20:21:35 by sungohki          #+#    #+#             */
+/*   Updated: 2022/12/21 20:27:25 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
-# include <stdarg.h>
-# include <unistd.h>
-# include "libft/libft.h"
+#include "libft.h"
 
-typedef struct s_arg
+void	ft_putnbr_us_fd(unsigned int n, int fd)
 {
-	char			arg_c;
-	char			*arg_str;
-	int				arg_int;
-	unsigned int	arg_unint;
-	void			*arg_void;
-}					t_arg;
+	char	temp;
 
-# define STRFORMAT "cspdiuxX%"
-
-#endif
+	temp = n % 10 + '0';
+	if (n / 10 > 0)
+		ft_putnbr_us_fd(n / 10, fd);
+	write(fd, &temp, 1);
+}
