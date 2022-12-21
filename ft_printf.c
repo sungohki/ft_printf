@@ -6,7 +6,7 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 09:59:42 by sungohki          #+#    #+#             */
-/*   Updated: 2022/12/21 21:47:03 by sungohki         ###   ########.fr       */
+/*   Updated: 2022/12/21 22:03:31 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,10 @@ char	detect_fm(const char *ch)
 	return (0);
 }
 
-void	write_fm(void *ch, char format)
+char	*write_fm(void *ch, char format)
 {
 	if (format == 'c')
-		ft_putchar_fd(*(char *)ch, 1);
-	else if (format == 's')
-		ft_putstr_fd((char *)ch, 1);
+		return ((char *)ch);
 	else if (format == 'p')
 		ft_putaddr_fd(ch, 1);
 	else if (format == 'd' || format == 'i')
@@ -45,52 +43,58 @@ void	write_fm(void *ch, char format)
 		ft_putnbr_hex_fd(*(unsigned int *)ch, 1, 1);
 }
 
-void	devide_fm(va_list *args, char format)
+char	*devide_fm(va_list *args, char format)
 {
 	t_arg	temp;
 
 	if (format == 's')
 	{
 		temp.arg_str = (char *)va_arg(*args, char *);
-		write_fm(temp.arg_str, format);
+		return (temp.arg_str);
 	}
 	else if (format == 'p')
 	{
 		temp.arg_void = (void *)va_arg(*args, void *);
-		write_fm(temp.arg_void, format);
+		return (write_fm(temp.arg_void, format));
 	}
 	else if (format == 'c' || format == 'd' || format == 'i')
 	{
 		temp.arg_int = va_arg(*args, int);
-		write_fm(&temp.arg_int, format);
+		return (write_fm(&temp.arg_int, format));
 	}
 	else if (format == 'u' || format == 'x' || format == 'X')
 	{
 		temp.arg_unint = (unsigned int)va_arg(*args, unsigned int);
-		write_fm(&temp.arg_unint, format);
+		return (write_fm(&temp.arg_unint, format));
 	}
-	if (format == '%')
-		write(1, "%", 1);
+	else
+		return ("%");
 }
 
 int	ft_printf(const char *fstr, ...)
 {
 	va_list	args;
-	int		len;
+	size_t	len;
 	char	fm;
+	char	*temp;
 
-	len = ft_strlen(fstr);
+	len = 0;
 	va_start(args, fstr);
 	while (*fstr)
 	{
 		fm = detect_fm(fstr);
 		if (fm)
 		{
-			devide_fm(&args, fm);
+			temp = devide_fm(&args, fm);
+			ft_putstr_fd(temp, 1);
+			len += ft_strlen(temp);
 			fstr = fstr + 2;
 		}
 		else
+		{
 			write(1, fstr++, 1);
+			len++;
+		}
 	}
 	va_end(args);
 	return (len);
