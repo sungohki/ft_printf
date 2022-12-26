@@ -6,7 +6,7 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 09:59:42 by sungohki          #+#    #+#             */
-/*   Updated: 2022/12/27 01:57:32 by sungohki         ###   ########.fr       */
+/*   Updated: 2022/12/27 02:32:48 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static int	print_arg(va_list *args, char format)
 	int		arg_len;
 
 	temp = ft_devide_fm(args, format);
+	if (temp == 0)
+		return (-1);
 	arg_len = ft_write_fm(temp, format);
 	if (format != '%' && temp != 0)
 		free(temp);
