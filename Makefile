@@ -6,7 +6,7 @@
 #    By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 15:51:25 by sungohki          #+#    #+#              #
-#    Updated: 2022/12/26 18:01:13 by sungohki         ###   ########.fr        #
+#    Updated: 2022/12/26 22:08:19 by sungohki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SOURCES = ./libft/ft_isalpha.c ./libft/ft_isdigit.c ./libft/ft_isalnum.c ./libft
 	./libft/ft_lstnew.c ./libft/ft_lstadd_front.c ./libft/ft_lstsize.c ./libft/ft_lstlast.c\
 	./libft/ft_lstadd_back.c ./libft/ft_lstdelone.c ./libft/ft_lstclear.c ./libft/ft_lstiter.c\
 	./libft/ft_lstmap.c\
-	./ft_detect_fm.c ./ft_devide_fm.c ./ft_printf.c ./ft_str_fm.c
+	./ft_detect_fm.c ./ft_devide_fm.c ./ft_printf.c ./ft_str_fm.c ./ft_write_fm.c
 OBJECTS = $(SOURCES:.c=.o)
 INCLUDES = ./ft_printf.h
 

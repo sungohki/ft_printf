@@ -6,27 +6,14 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 11:47:12 by sungohki          #+#    #+#             */
-/*   Updated: 2022/12/26 17:55:51 by sungohki         ###   ########.fr       */
+/*   Updated: 2022/12/26 1 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
-#include "libftprintf.h"
-
-static int	addr_len(unsigned long addr)
-{
-	int		len;
-
-	len = 0;
-	while (addr > 0)
-	{
-		addr = addr / 16;
-		len++;
-	}
-	return (len);
-}
+#include "ft_printf.h"
 
 // static void	addr_write(unsigned long n, char *addr)
 // {
@@ -57,6 +44,21 @@ static int	addr_len(unsigned long addr)
 
 int	main(void)
 {
+	// paco -s : no format
+	if(1){
+		int	test10[100];
+
+		// printf("ex : ");
+		// test10[0] = printf("\001\002\007\v\010\f\r\n");
+		// printf("ft : ");
+		// test10[1] = ft_printf("\001\002\007\v\010\f\r\n");
+		// printf ("ex : [%d]\n", test10[0]);
+		// printf ("ft : [%d]\n", test10[1]);
+		test10[0] = printf("%%%c\n", 'x');
+		test10[1] = ft_printf("%%%c\n", 'x');
+		printf("0 : [%d] 1 : [%d]\n", test10[0], test10[1]);
+	}
+
 	// // conversion에 널 포인터가 들어간 경우
 	// printf("test : [%s]\n", (void *)0);
 	// // conversion선언은 되었으나 args를 선언안한 경우
@@ -114,45 +116,77 @@ int	main(void)
 	// if (1){
 	// 	printf("size :[%lu] [%lu]\n", sizeof(va_list), sizeof(char *));
 	// }
+
 	// ft_printf() 함수 테스트
-	if (1){
-		// ft_printf("hello, %s", "world");
-		int	test[10];	// for ft_printf
-		int	test2[10];	// for printf
-		char	*ex = "hello";
-		test[0] = ft_printf("ft_%%c : [%c]\n", 'a'); 
-		test2[0] = printf("ex_%%c : [%c]\n", 'a');
-		test[1] = ft_printf("ft_%%s : [%s]\n", "hello, world!"); 
-		test2[1] = printf("ex_%%s : [%s]\n", "hello, world!"); 
-		// addr_write((unsigned long)ex, 1);
-		// write(1, "\n", 1);
-		// ft_putaddr_fd(ex, 1);
-		// write(1, "\n", 1);
-		test[2] = ft_printf("ft_%%p : [%p] [%s]\n", ex, ex);
-		printf("len : %d\n", addr_len((unsigned long)ex));
-		test2[2] = printf("ex_%%p : [%p] [%s]\n", ex, ex); 
-		test[3] = ft_printf("ft_%%d : [%d] [%d]\n", 123, -123); 
-		test2[3] = printf("ex_%%d : [%d] [%d]\n", 123, -123); 
-		test[4] = ft_printf("ft_%%i : [%i] [%i]\n", 321, -321); 
-		test2[4] = printf("ex_%%i : [%i] [%i]\n", 321, -321); 
-		test[5] = ft_printf("ft_%%u : [%u] [%u]\n", INT32_MAX, -1); 
-		test2[5] = printf("ex_%%u : [%u] [%u]\n", INT32_MAX, -1); 
-		test[6] = ft_printf("ft_%%x : [%x]\n", 1234); 
-		test2[6] = printf("ex_%%x : [%x]\n", 1234); 
-		test[7] = ft_printf("ft_%%X : [%X]\n", 1234); 
-		test2[7] = printf("ex_%%X : [%X]\n", 1234); 
-		test[8] = ft_printf("ft_%%%% : [%%]\n"); 
-		test2[8] = printf("ex_%%%% : [%%]\n"); 
-		printf("ft_printf :\t");
-		for(int i = 0; i < 9; i++){
-			printf("%d ", test[i]);
-		}
-		printf("\n");
-		printf("printf :\t");
-		for(int i = 0; i < 9; i++){
-			printf("%d ", test2[i]);
-		}
-		printf("\n");
-	}
+	// if (1){
+	// 	// ft_printf("hello, %s", "world");
+	// 	int	test[10];	// for ft_printf
+	// 	int	test2[10];	// for printf
+	// 	char	*ex = "hello";
+	// 	test[0] = ft_printf("ft_%%c : [%c]\n", 'a'); 
+	// 	test2[0] = printf("ex_%%c : [%c]\n", 'a');
+	// 	test[1] = ft_printf("ft_%%s : [%s]\n", "hello, world!"); 
+	// 	test2[1] = printf("ex_%%s : [%s]\n", "hello, world!"); 
+	// 	// addr_write((unsigned long)ex, 1);
+	// 	// write(1, "\n", 1);
+	// 	// ft_putaddr_fd(ex, 1);
+	// 	// write(1, "\n", 1);
+	// 	test[2] = ft_printf("ft_%%p : [%p] [%s]\n", ex, ex);
+	// 	printf("len : %d\n", addr_len((unsigned long)ex));
+	// 	test2[2] = printf("ex_%%p : [%p] [%s]\n", ex, ex); 
+	// 	test[3] = ft_printf("ft_%%d : [%d] [%d]\n", 123, -123); 
+	// 	test2[3] = printf("ex_%%d : [%d] [%d]\n", 123, -123); 
+	// 	test[4] = ft_printf("ft_%%i : [%i] [%i]\n", 321, -321); 
+	// 	test2[4] = printf("ex_%%i : [%i] [%i]\n", 321, -321); 
+	// 	test[5] = ft_printf("ft_%%u : [%u] [%u]\n", INT32_MAX, -1); 
+	// 	test2[5] = printf("ex_%%u : [%u] [%u]\n", INT32_MAX, -1); 
+	// 	test[6] = ft_printf("ft_%%x : [%x]\n", 1234); 
+	// 	test2[6] = printf("ex_%%x : [%x]\n", 1234); 
+	// 	test[7] = ft_printf("ft_%%X : [%X]\n", 1234); 
+	// 	test2[7] = printf("ex_%%X : [%X]\n", 1234); 
+	// 	test[8] = ft_printf("ft_%%%% : [%%]\n"); 
+	// 	test2[8] = printf("ex_%%%% : [%%]\n"); 
+	// 	printf("ft_printf :\t");
+	// 	for(int i = 0; i < 9; i++){
+	// 		printf("%d ", test[i]);
+	// 	}
+	// 	printf("\n");
+	// 	printf("printf :\t");
+	// 	for(int i = 0; i < 9; i++){
+	// 		printf("%d ", test2[i]);
+	// 	}
+	// 	printf("\n");
+	// 	}
+	// if(1){
+		// printf("ft = %d\n", ft_printf("[%c][%c][%c]", '0', 0, '1'));
+		// printf("ft = %d\n", ft_printf("[%c][%c][%c]", 0, '1', '2'));
+		// printf("ft = %d\n", ft_printf("[%c][%c][%c]", '2', '1', 0));
+		// printf("ex = %d\n", printf("[%c][%c][%c]", '0', 0, '1'));
+		// printf("ex = %d\n", printf("[%c][%c][%c]", 0, '1', '2'));
+		// printf("ex = %d\n", printf("[%c][%c][%c]", '2', '1', 0));
+		// printf("ft = %d\n", ft_printf(" %c", '0' - 256));
+		// printf("ex = %d\n", printf(" %c", '0' - 256));
+		// ft_printf("[%c]\n", 0);
+		// printf("write returns : [%zd]", write(1, "\0\n", 2));
+		// printf("[%c]\n", 0);
+
+		// printf("ft : %d\n", ft_printf(" [%s] [%s] [%s] [%s] [%s]", " - ", "", "4", "", "2 "));
+		// printf("ex : %d\n", printf(" [%s] [%s] [%s] [%s] [%s]", " - ", "", "4", "", "2 "));
+	// }
+
+	// if (1){
+		// printf("ex : %p %p \n", 0, 0);
+		// ft_printf("ft : %p %p \n", 0, 0);
+
+		// printf("ex : [%d]\n", printf("%s", NULL));
+		// printf("//\nex1 : NULL is [%s] NULL \n", NULL);
+		// printf("ex2 : NULL is [%s] NULL \n", 0);
+		// ft_putstr_fd((char *)0, 1);
+		// ft_printf("ft : NULL [%s] NULL ", NULL);
+		// printf("//\n");
+
+		// ft_printf("%iLaq-sHY%XfI5B(^u \n%x{Tfi\"%c^jz#o_`>", 2122883773, 1189719076, -1194259054, -1071431376);
+		// ft_printf("E/Wd%p0@NCw+K%cNQ`\r%c\rQc(H#%%5r5Hvt[.uK%d*#ly\rH.%x %%Z3Y_", (void *)-2902810474066801905, -598970712, -1832214407, 435305193, -723518034);
+	// }
 	return (0);
 }

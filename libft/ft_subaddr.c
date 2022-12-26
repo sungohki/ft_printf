@@ -6,7 +6,7 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 17:23:40 by sungohki          #+#    #+#             */
-/*   Updated: 2022/12/26 17:25:10 by sungohki         ###   ########.fr       */
+/*   Updated: 2022/12/26 21:27:39 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static int	addr_len(unsigned long addr)
 {
 	int		len;
 
-	len = 0;
-	while (addr > 0)
+	len = 1;
+	while (addr / 16 > 0)
 	{
 		addr = addr / 16;
 		len++;
@@ -39,6 +39,7 @@ char	*ft_subaddr(void *ch)
 	result[len--] = 0;
 	result[0] = '0';
 	result[1] = 'x';
+	result[2] = '0';
 	while (temp > 0)
 	{
 		result[len--] = "0123456789abcdef"[temp % 16];
