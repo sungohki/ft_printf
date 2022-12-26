@@ -6,7 +6,7 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 11:26:11 by sungohki          #+#    #+#             */
-/*   Updated: 2022/12/21 17:19:10 by sungohki         ###   ########.fr       */
+/*   Updated: 2022/12/26 17:36:18 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,10 @@ typedef struct s_arg
 }					t_arg;
 
 # define STRFORMAT "cspdiuxX%"
+
+int		ft_printf(const char *fstr, ...);
+char	ft_detect_fm(const char *ch);
+char	*ft_devide_fm(va_list *args, char format);
+char	*ft_str_fm(void *ch, char format);
 
 #endif
