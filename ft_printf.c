@@ -6,7 +6,7 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 09:59:42 by sungohki          #+#    #+#             */
-/*   Updated: 2022/12/27 02:32:48 by sungohki         ###   ########.fr       */
+/*   Updated: 2022/12/27 05:41:50 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	ft_printf(const char *fstr, ...)
 			arg_len = print_arg(&args, fm);
 			fstr = fstr + 2;
 		}
-		else
-			arg_len = write(1, fstr++, 1);
+		else if (*(fstr++) != '%')
+			arg_len = write(1, fstr - 1, 1);
 		if (arg_len == -1)
 			return (-1);
 		len += arg_len;

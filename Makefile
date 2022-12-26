@@ -6,7 +6,7 @@
 #    By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 15:51:25 by sungohki          #+#    #+#              #
-#    Updated: 2022/12/26 22:08:19 by sungohki         ###   ########.fr        #
+#    Updated: 2022/12/27 05:46:02 by sungohki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,11 @@ INCLUDES = ./ft_printf.h
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES)
 
-$(NAME) : all
+$(NAME) : all clean
 
 all :
 	$(AR) $(AROPTS) $(NAME) $^
+	touch $@
 
 all : $(OBJECTS)
 
