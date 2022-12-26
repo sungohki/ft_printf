@@ -6,7 +6,7 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 09:59:42 by sungohki          #+#    #+#             */
-/*   Updated: 2022/12/21 22:03:31 by sungohki         ###   ########.fr       */
+/*   Updated: 2022/12/26 17:01:54 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,22 @@ char	detect_fm(const char *ch)
 	return (0);
 }
 
-char	*write_fm(void *ch, char format)
+char	*str_fm(void *ch, char format)
 {
 	if (format == 'c')
-		return ((char *)ch);
+		return (ft_substr((char *)ch, 0, 1));
 	else if (format == 'p')
-		ft_putaddr_fd(ch, 1);
+		return (ft_subaddr(ch));
 	else if (format == 'd' || format == 'i')
-		ft_putnbr_fd(*(int *)ch, 1);
+		return (ft_itoa(*(int *)ch));
 	else if (format == 'u')
-		ft_putnbr_us_fd(*(unsigned int *)ch, 1);
+		return (ft_itoa_us(*(unsigned int *)ch));
 	else if (format == 'x')
-		ft_putnbr_hex_fd(*(unsigned int *)ch, 1, 0);
+		return (ft_itoa_hex(*(unsigned int *)ch, 0));
 	else if (format == 'X')
-		ft_putnbr_hex_fd(*(unsigned int *)ch, 1, 1);
+		return (ft_itoa_hex(*(unsigned int *)ch, 1));
+	else
+		return (0);
 }
 
 char	*devide_fm(va_list *args, char format)
@@ -55,17 +57,17 @@ char	*devide_fm(va_list *args, char format)
 	else if (format == 'p')
 	{
 		temp.arg_void = (void *)va_arg(*args, void *);
-		return (write_fm(temp.arg_void, format));
+		return (str_fm(temp.arg_void, format));
 	}
 	else if (format == 'c' || format == 'd' || format == 'i')
 	{
 		temp.arg_int = va_arg(*args, int);
-		return (write_fm(&temp.arg_int, format));
+		return (str_fm(&temp.arg_int, format));
 	}
 	else if (format == 'u' || format == 'x' || format == 'X')
 	{
 		temp.arg_unint = (unsigned int)va_arg(*args, unsigned int);
-		return (write_fm(&temp.arg_unint, format));
+		return (str_fm(&temp.arg_unint, format));
 	}
 	else
 		return ("%");

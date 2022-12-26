@@ -6,7 +6,7 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 11:47:12 by sungohki          #+#    #+#             */
-/*   Updated: 2022/12/21 21:11:47 by sungohki         ###   ########.fr       */
+/*   Updated: 2022/12/26 17:10:49 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,44 @@
 #include "libft/libft.h"
 #include "ft_printf.c"
 
-// static void	addr_write(unsigned long n, int fd)
-// {
-// 	char	temp;
+static int	addr_len(unsigned long addr)
+{
+	int		len;
 
-// 	temp = "0123456789abcdef"[n % 16];
-// 	if (n / 16 > 0)
-// 		addr_write(n / 16, fd);
-// 	write(fd, &temp, 1);
+	len = 0;
+	while (addr > 0)
+	{
+		addr = addr / 16;
+		len++;
+	}
+	return (len);
+}
+
+// static void	addr_write(unsigned long n, char *addr)
+// {
+// 	*(addr++) = '0';
+// 	*(addr++) = 'x';
+// 	while (*addr)
+// 		addr++;
+// 	while (n > 0)
+// 	{
+// 		*(--addr) = "0123456789abcdef"[n % 16];
+// 		n = n / 16;
+// 	}
+// }
+
+// char	*ft_subaddr(void *ch)
+// {
+// 	char	*result;
+// 	int		len;
+
+// 	len = 2 + addr_len((unsigned long)ch);
+// 	result = (char *)malloc(sizeof(char) * (len + 1));
+// 	if (result == 0)
+// 		return (0);
+// 	result[len] = 0;
+// 	addr_write((unsigned long)ch, result);
+// 	return (result);
 // }
 
 int	main(void)
@@ -89,35 +119,38 @@ int	main(void)
 	// ft_printf() 함수 테스트
 	if (1){
 		// ft_printf("hello, %s", "world");
-		int	test[10];
-		int	test2[10];
+		int	test[10];	// for ft_printf
+		int	test2[10];	// for printf
 		char	*ex = "hello";
-		test[0] = ft_printf("%%c : [%c]\n", 'a'); 
-		test2[0] = printf("%%c : [%c]\n", 'a');
-		test[1] = ft_printf("%%s : [%s]\n", "hello, world!"); 
-		test2[1] = printf("%%s : [%s]\n", "hello, world!"); 
+		test[0] = ft_printf("ft_%%c : [%c]\n", 'a'); 
+		test2[0] = printf("ex_%%c : [%c]\n", 'a');
+		test[1] = ft_printf("ft_%%s : [%s]\n", "hello, world!"); 
+		test2[1] = printf("ex_%%s : [%s]\n", "hello, world!"); 
 		// addr_write((unsigned long)ex, 1);
 		// write(1, "\n", 1);
 		// ft_putaddr_fd(ex, 1);
 		// write(1, "\n", 1);
-		test[2] = ft_printf("%%p : [%p] [%s]\n", ex, ex); 
-		test2[2] = printf("%%p : [%p] [%s]\n", ex, ex); 
-		test[3] = ft_printf("%%d : [%d] [%d]\n", 123, -123); 
-		test2[3] = printf("%%d : [%d] [%d]\n", 123, -123); 
-		test[4] = ft_printf("%%i : [%i] [%i]\n", 321, -321); 
-		test2[4] = printf("%%i : [%i] [%i]\n", 321, -321); 
-		test[5] = ft_printf("%%u : [%u] [%u]\n", INT32_MAX, -1); 
-		test2[5] = printf("%%u : [%u] [%u]\n", INT32_MAX, -1); 
-		test[6] = ft_printf("%%x : [%x]\n", 1234); 
-		test2[6] = printf("%%x : [%x]\n", 1234); 
-		test[7] = ft_printf("%%X : [%X]\n", 1234); 
-		test2[7] = printf("%%X : [%X]\n", 1234); 
-		test[8] = ft_printf("%%%% : [%%]\n"); 
-		test2[8] = printf("%%%% : [%%]\n"); 
+		test[2] = ft_printf("ft_%%p : [%p] [%s]\n", ex, ex);
+		printf("len : %d\n", addr_len((unsigned long)ex));
+		test2[2] = printf("ex_%%p : [%p] [%s]\n", ex, ex); 
+		test[3] = ft_printf("ft_%%d : [%d] [%d]\n", 123, -123); 
+		test2[3] = printf("ex_%%d : [%d] [%d]\n", 123, -123); 
+		test[4] = ft_printf("ft_%%i : [%i] [%i]\n", 321, -321); 
+		test2[4] = printf("ex_%%i : [%i] [%i]\n", 321, -321); 
+		test[5] = ft_printf("ft_%%u : [%u] [%u]\n", INT32_MAX, -1); 
+		test2[5] = printf("ex_%%u : [%u] [%u]\n", INT32_MAX, -1); 
+		test[6] = ft_printf("ft_%%x : [%x]\n", 1234); 
+		test2[6] = printf("ex_%%x : [%x]\n", 1234); 
+		test[7] = ft_printf("ft_%%X : [%X]\n", 1234); 
+		test2[7] = printf("ex_%%X : [%X]\n", 1234); 
+		test[8] = ft_printf("ft_%%%% : [%%]\n"); 
+		test2[8] = printf("ex_%%%% : [%%]\n"); 
+		printf("ft_printf :\t");
 		for(int i = 0; i < 9; i++){
 			printf("%d ", test[i]);
 		}
 		printf("\n");
+		printf("printf :\t");
 		for(int i = 0; i < 9; i++){
 			printf("%d ", test2[i]);
 		}

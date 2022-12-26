@@ -6,7 +6,7 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:15:46 by sungohki          #+#    #+#             */
-/*   Updated: 2022/12/21 20:25:24 by sungohki         ###   ########.fr       */
+/*   Updated: 2022/12/26 14:57:38 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
 char	*ft_itoa(int n);
+char	*ft_itoa_us(unsigned int n);
+char	*ft_itoa_hex(unsigned int n, int isX);
 
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -70,6 +72,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_subaddr(void *ch);
 
 int		ft_tolower(int c);
 int		ft_toupper(int c);
