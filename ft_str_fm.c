@@ -6,11 +6,11 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 17:33:06 by sungohki          #+#    #+#             */
-/*   Updated: 2022/12/26 17:33:27 by sungohki         ###   ########.fr       */
+/*   Updated: 2022/12/26 18:00:14 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 char	*ft_str_fm(void *ch, char format)
 {

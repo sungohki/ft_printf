@@ -6,12 +6,11 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 09:59:42 by sungohki          #+#    #+#             */
-/*   Updated: 2022/12/26 17:34:52 by sungohki         ###   ########.fr       */
+/*   Updated: 2022/12/26 17:59:53 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h" 
-#include "libft/libft.h"
+#include "ft_printf.h" 
 
 int	ft_printf(const char *fstr, ...)
 {

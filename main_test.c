@@ -6,7 +6,7 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 11:47:12 by sungohki          #+#    #+#             */
-/*   Updated: 2022/12/26 17:10:49 by sungohki         ###   ########.fr       */
+/*   Updated: 2022/12/26 17:55:51 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include <stdarg.h>
 #include <string.h>
 #include "libftprintf.h"
-#include "libft/libft.h"
-#include "ft_printf.c"
 
 static int	addr_len(unsigned long addr)
 {
