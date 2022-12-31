@@ -6,7 +6,7 @@
 #    By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 15:51:25 by sungohki          #+#    #+#              #
-#    Updated: 2022/12/31 18:26:23 by sungohki         ###   ########.fr        #
+#    Updated: 2022/12/31 18:23:37 by sungohki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,17 +38,22 @@ INCLUDES = ./ft_printf.h
 $(NAME) : all
 
 all bonus :
+	rm all bonus $(NAME)
 	$(AR) $(AROPTS) $(NAME) $^
 	touch $@
 
 all : $(OBJECTS)
 
+bonus : $(OBJECTS_BONUS) $(OBJECTS)
+
 clean :
 	rm -f $(OBJECTS) $(OBJECTS_BONUS)
 
 fclean : clean
-	rm -f $(NAME) all
+	rm -f $(NAME) all bonus
 
 re : fclean all
+
+re_bonus : fclean bonus
 
 .PHONY : clean fclean re

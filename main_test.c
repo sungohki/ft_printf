@@ -13,6 +13,8 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
+#include <stdlib.h>
+#include <limits.h>
 #include "ft_printf.h"
 
 // static void	addr_write(unsigned long n, char *addr)
@@ -54,9 +56,15 @@ int	main(void)
 		// test10[1] = ft_printf("\001\002\007\v\010\f\r\n");
 		// printf ("ex : [%d]\n", test10[0]);
 		// printf ("ft : [%d]\n", test10[1]);
-		test10[0] = printf("%%%c\n", 'x');
-		test10[1] = ft_printf("%%%c\n", 'x');
-		printf("0 : [%d] 1 : [%d]\n", test10[0], test10[1]);
+		test10[0] = printf("%%c\n", 'x');
+		test10[1] = ft_printf("%%c\n", 'x');
+		// printf("0 : [%d] 1 : [%d]\n", test10[0], test10[1]);
+		
+		// char	test20[21474];
+		// for(int i = 0; i < 21474; i++)
+		// 	test20[i] = '*';
+		// test10[2] = printf("%s", test20);
+		// printf("\n-> [%d]", test10[2]);
 	}
 
 	// // conversion에 널 포인터가 들어간 경우
