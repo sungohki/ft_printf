@@ -6,7 +6,7 @@
 #    By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 15:51:25 by sungohki          #+#    #+#              #
-#    Updated: 2022/12/27 05:46:02 by sungohki         ###   ########.fr        #
+#    Updated: 2022/12/31 13:53:43 by sungohki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SOURCES = ./libft/ft_isalpha.c ./libft/ft_isdigit.c ./libft/ft_isalnum.c ./libft
 	./libft/ft_lstmap.c\
 	./ft_detect_fm.c ./ft_devide_fm.c ./ft_printf.c ./ft_str_fm.c ./ft_write_fm.c
 OBJECTS = $(SOURCES:.c=.o)
+OBJECTS_BONUS = $(SOURCES_BONUS:.c=.o)
 INCLUDES = ./ft_printf.h
 
 %.o : %.c
@@ -36,18 +37,23 @@ INCLUDES = ./ft_printf.h
 
 $(NAME) : all clean
 
-all :
+all bonus :
+	rm all bonus $(NAME)
 	$(AR) $(AROPTS) $(NAME) $^
 	touch $@
 
 all : $(OBJECTS)
 
+bonus : $(OBJECTS_BONUS) $(OBJECTS)
+
 clean :
-	rm -f $(OBJECTS)
+	rm -f $(OBJECTS) $(OBJECTS_BONUS)
 
 fclean : clean
-	rm -f $(NAME) all
+	rm -f $(NAME) all bonus
 
 re : fclean all
+
+re_bonus : fclean bonus
 
 .PHONY : clean fclean re
